@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Django settings for aaacec project.
+# Django settings for basic pinax project.
 
 import os.path
 import posixpath
@@ -46,7 +46,7 @@ TIME_ZONE = "US/Eastern"
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "pt-BR"
 
 SITE_ID = 1
 
@@ -92,7 +92,7 @@ ADMIN_MEDIA_PREFIX = posixpath.join(STATIC_URL, "admin/")
 COMPRESS_OUTPUT_DIR = "cache"
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = "$8a*1i)4!^f*x38$evn&)xuoy_q)leisnb()a8dvuhlh5$y=m8"
+SECRET_KEY = "ks&b(y32adf$sbpjx&v$1c=*sxj1v9f@fh4%hd$q1my5y42dgr"
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = [
@@ -105,7 +105,10 @@ MIDDLEWARE_CLASSES = [
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django_openid.consumer.SessionConsumer",
     "django.contrib.messages.middleware.MessageMiddleware",
+    "pinax.apps.account.middleware.LocaleMiddleware",
+    "pagination.middleware.PaginationMiddleware",
     "pinax.middleware.security.HideSensistiveFieldsMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
@@ -127,6 +130,11 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     "staticfiles.context_processors.static",
     
     "pinax.core.context_processors.pinax_settings",
+    
+    "pinax.apps.account.context_processors.account",
+    
+    "notification.context_processors.notification",
+    "announcements.context_processors.site_wide_announcements",
 ]
 
 INSTALLED_APPS = [
@@ -145,13 +153,26 @@ INSTALLED_APPS = [
     "pinax_theme_bootstrap",
     
     # external
+    "notification", # must be first
     "staticfiles",
     "compressor",
     "debug_toolbar",
+    "mailer",
+    "django_openid",
+    "timezones",
+    "emailconfirmation",
+    "announcements",
+    "pagination",
+    "idios",
+    "metron",
     
     # Pinax
+    "pinax.apps.account",
+    "pinax.apps.signup_codes",
     
     # project
+    "about",
+    "profiles",
 ]
 
 FIXTURE_DIRS = [
@@ -161,6 +182,31 @@ FIXTURE_DIRS = [
 MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
 
 EMAIL_BACKEND = "mailer.backend.DbBackend"
+
+ABSOLUTE_URL_OVERRIDES = {
+    "auth.user": lambda o: "/profiles/profile/%s/" % o.username,
+}
+
+AUTH_PROFILE_MODULE = "profiles.Profile"
+NOTIFICATION_LANGUAGE_MODULE = "account.Account"
+
+ACCOUNT_OPEN_SIGNUP = True
+ACCOUNT_USE_OPENID = False
+ACCOUNT_REQUIRED_EMAIL = False
+ACCOUNT_EMAIL_VERIFICATION = False
+ACCOUNT_EMAIL_AUTHENTICATION = False
+ACCOUNT_UNIQUE_EMAIL = EMAIL_CONFIRMATION_UNIQUE_EMAIL = False
+
+AUTHENTICATION_BACKENDS = [
+    "pinax.apps.account.auth_backends.AuthenticationBackend",
+]
+
+LOGIN_URL = "/account/login/" # @@@ any way this can be a url name?
+LOGIN_REDIRECT_URLNAME = "what_next"
+LOGOUT_REDIRECT_URLNAME = "home"
+
+EMAIL_CONFIRMATION_DAYS = 2
+EMAIL_DEBUG = DEBUG
 
 DEBUG_TOOLBAR_CONFIG = {
     "INTERCEPT_REDIRECTS": False,

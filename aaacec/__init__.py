@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 __about__ = """
-This project lays the foundation for all other Pinax starter projects. It
-provides the project directory layout and some key infrastructure apps on
-which the other starter projects are based.
+This project takes the account_project and adds profiles and notifications.
+It is a foundation suitable for many sites that have user accounts with
+profiles.
 """

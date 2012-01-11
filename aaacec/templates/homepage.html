@@ -1,6 +1,7 @@
 {% extends "banner_base.html" %}
 
 {% load i18n %}
+{% load ifsetting_tag %}
 
 {% block head_title %}{% trans "Welcome" %}{% endblock %}
 
@@ -18,14 +19,25 @@
         {% endblocktrans %}
     </p>
     
-    <h2>About Zero Project</h2>
+    <h2>About Basic Project</h2>
     <p>
         {% blocktrans %}
-        This project lays the foundation for all other Pinax starter projects. It
-        provides the project directory layout and some key infrastructure apps on
-        which the other starter projects are based.
+        This project takes the account_project and adds profiles and notifications.
+        It is a foundation suitable for many sites that have user accounts with
+        profiles.
         {% endblocktrans %}
     </p>
     
-    <p><a href="http://pinaxproject.com/" class="btn primary large">{% trans "Learn more &raquo;" %}</a></p>
+    {% if user.is_authenticated %}
+        {% url what_next as what_next_url %}
+        <p class="what_next">{% blocktrans %}Wondering <a href="{{ what_next_url }}" class="btn primary large">What Next</a>?{% endblocktrans %}</p>
+    {% else %}
+        {% url acct_login as login_url %}
+        {% ifsetting ACCOUNT_OPEN_SIGNUP %}
+            {% url acct_signup as signup_url %}
+            <p>{% blocktrans %}You can <a href="{{ login_url }}" class="btn">Log In</a> or <a href="{{ signup_url }}" class="btn primary">Sign Up</a> to try out the site.{% endblocktrans %}</p>
+        {% else %}
+            <p>{% blocktrans %}You can <a href="{{ login_url }}" class="btn primary large">Log In</a> to try out the site.{% endblocktrans %}</p>
+        {% endifsetting %}
+    {% endif %}
 {% endblock %}
