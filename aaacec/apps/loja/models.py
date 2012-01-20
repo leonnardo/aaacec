@@ -49,7 +49,7 @@ class Campo(Model):
     opção de lista, para o caso de tipo == 'lista'
     '''
     lista = TextField(blank=True, null=True)
-    
+    obrigatorio = BooleanField(verbose_name=u"Obrigatório")
     #externos
     encomenda = ForeignKey(Encomenda)
     
