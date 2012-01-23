@@ -8,7 +8,7 @@ class CategoriaProduto(Model):
 class Produto(Model):
     #internos
     nome = CharField(max_length=50)
-    descricao = TextField(verbose_name='Descrição'
+    descricao = TextField(verbose_name='Descrição')
     #TODO: adicionar foto do produto
     preco_membro = FloatField()
     preco_naomembro = FloatField()
@@ -20,7 +20,7 @@ class Produto(Model):
     def __unicode__(self):
         return self.nome
         
-Class Encomenda(Model):
+class Encomenda(Model):
     #internos
     nome = CharField(max_length=50)
     abertura = DateTimeField()
@@ -40,7 +40,7 @@ class Campo(Model):
         ('decimal','Decimal'),
         ('lista','Lista'),
         ('bool','Booleano'),
-    
+   ) 
     #internos    
     nome = CharField(max_length=50)
     tipo = CharField(max_length=10, choices=TIPO_CHOICES)
