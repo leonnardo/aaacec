@@ -1,4 +1,4 @@
-#!/home/leandro/aaacec/aaacec-env/bin/python
+#!/home/leonnardo/aaacec/aaacec-env/bin/python
 from django.core import management
 
 if __name__ == "__main__":

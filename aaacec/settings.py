@@ -218,3 +218,8 @@ try:
     from local_settings import *
 except ImportError:
     pass
+
+# Configuracao para a API do Flickr
+FLICKR_API_KEY = 'bf14314c63385e4244ecf007d4264c3f'
+FLICKR_API_SECRET = 'fe0c3cf5856c2682'
+FLICKR_USER_ID = '44256497@N07'

@@ -1,0 +1,10 @@
+<p>Caguei, caguei, foda-se!</p>
+{% for photoset in output %}
+	<h1>{{ photoset.album_name }}</h1><br />
+	{% for photo in photoset.photo_list %}
+		<img 
+			src="{{photo}}" 
+			width="100px" 
+			height="100px"/>
+	{% endfor %}
+{% endfor %}
