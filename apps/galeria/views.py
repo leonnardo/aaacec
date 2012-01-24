@@ -1,16 +1,17 @@
-from django.shortcuts import render_to_respone, redirect
+from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
 from settings import FLICKR_API_KEY, FLICKR_API_SECRET
 import flickrapi
 
 def require_flickr_auth(view):
     def protected_view(request, *args, **kwargs):
-        if 'token' in request.ression
+        if 'token' in request.session:
             token = request.session['token']
         else: 
             token = None
+        
 
-        f = flickr.FlickrAPI(FLICKR_API_KEY,
+        f = flickrapi.FlickrAPI(FLICKR_API_KEY,
             FLICKR_API_SECRET, token = token,
             store_token=False)
 
@@ -23,7 +24,7 @@ def require_flickr_auth(view):
                 token = None
                 del request.session['token']
         
-        if not token
+        if not token:
                 # redireciona pro flickr para autenticacao
                 # caso nao haja token valido
                 url = f.web_login_url(perms='write')
@@ -64,7 +65,7 @@ def getPhotosets(flickr):
 def getPhotos(flickr,id):
     photoset_photos = flickr.photosets_getPhotos(photoset_id=id).find('photoset').findall('photo')
     photoset_photos_list = []
-    for photo in photoset_photos
+    for photo in photoset_photos:
         photo_id = photo.attrib['id']
         secret = photo.attrib['secret']
         farm = photo.attrib['farm']
@@ -77,15 +78,18 @@ def getPhotos(flickr,id):
 
 @require_flickr_auth
 def index(request):
+    assert False
     f = flickr(request)
     photosets = getPhotosets(f)
     output = []
-    for photoset in photosets
+    for photoset in photosets:
         photos = getPhotos(f, photoset['id'])
         output.append({
             'album_name':photoset['name'],
             'photo_list':photos})
     context = {'output': output}
+    print 'Aqui!'
+    print context['output']
     return render_to_response('index.html',context, context_instance=RequestContext(request))
 
 
