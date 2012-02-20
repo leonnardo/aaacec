@@ -2,8 +2,12 @@
 #models.py - loja
 from  django.db.models import *
 from django.contrib.auth.models import User
+
+
 class CategoriaProduto(Model):
     nome = CharField(max_length=50)
+    def __unicode__(self):
+        return self.nome
     
 class Produto(Model):
     #internos
@@ -33,6 +37,14 @@ class Encomenda(Model):
     def __unicode__(self):
         return self.nome
     
+    def campos(self):
+        lista = Campo.objects.filter(encomenda__id=self.id)
+        string = ''
+        for elem in lista[:len(lista)-1]:
+            string += str(elem)+', '
+        string += str(lista[len(lista)-1])
+        return string
+    
 class Campo(Model):
     TIPO_CHOICES =(
         ('texto','Texto'),
@@ -40,7 +52,7 @@ class Campo(Model):
         ('decimal','Decimal'),
         ('lista','Lista'),
         ('bool','Booleano'),
-   ) 
+    ) 
     #internos    
     nome = CharField(max_length=50)
     tipo = CharField(max_length=10, choices=TIPO_CHOICES)
@@ -48,7 +60,7 @@ class Campo(Model):
     lista é uma string, separada por virgulas, com cada
     opção de lista, para o caso de tipo == 'lista'
     '''
-    lista = TextField(blank=True, null=True)
+    lista = TextField(blank=True, null=True,help_text=u"Apenas válido para tipo == 'lista'. Digite uma opção por linha.")
     obrigatorio = BooleanField(verbose_name=u"Obrigatório")
     #externos
     encomenda = ForeignKey(Encomenda)
@@ -56,7 +68,7 @@ class Campo(Model):
     #metodos
     def __unicode__(self):
         return self.nome
-    
+
 class Info(Model):
     #internos
     valor = CharField(max_length=20)
