@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import flickrapi
 from django.conf import settings
 from django.http import HttpResponseRedirect, HttpResponse
@@ -69,6 +70,7 @@ def flickr(request):
             store_token=False)
     return f
 
+# view que pega as informações de todos os albuns
 def getPhotosets(flickr):
     photoset_list = flickr.photosets_getList().find('photosets').findall('photoset')
     photoset_list_array = []
