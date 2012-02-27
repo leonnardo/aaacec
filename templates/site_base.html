@@ -1,11 +1,13 @@
-{% extends "theme_base.html" %}
+{% extends "aaacec_base.html" %}
+
+
 
 {% load metron_tags %}
 {% load i18n %}
 
 {% block nav %}
     {% if user.is_authenticated %}
-        <ul>{% spaceless %}
+        <ul class='nav'>{% spaceless %}
             <li id="tab_profile"><a href="{% url profile_detail user.username %}">{% trans "Profile" %}</a></li>
             <li id="tab_notices"><a href="{% url notification_notices %}">{% trans "Notices" %}{% if notice_unseen_count %} ({{ notice_unseen_count }}){% endif %}</a></li>
             <li id="tab_loja"><a href="{% url apps.loja.views.index %}">Loja</a></li>

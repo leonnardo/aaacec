@@ -50,6 +50,10 @@ class Pedido(Model):
     usuario = ForeignKey(User,verbose_name='Usuário')
     encomenda = ForeignKey(Encomenda)
 
+    #internos
+    #data = DateTimeField()
+    #status = CharField(choices=STATUS_CHOICES)
+
     def __unicode__(self):
         return str(self.usuario)+" -> "+str(self.encomenda)
 
@@ -87,5 +91,5 @@ class Info(Model):
     
     #metodos
     def __unicode__(self):
-        return self.usuario.username+":"+self.valor
+        return self.pedido.usuario.username+":"+self.valor
     
