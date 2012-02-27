@@ -1,0 +1,50 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+{% load ifsetting_tag %}
+
+{% block head_title %}Fazer Encomenda{% endblock %}
+
+{% block body %}
+    <h1>{{encomenda.nome}}</h1>
+
+    {% if warning %}
+    <div class="alert alert-info">
+    	Você já possui {{pedidos|length}} pedido{{pedidos|pluralize}} para essa encomenda. Você pode fazer mais um pedido preenchendo o formulário abaixo ou alterar/checar seus outros pedidos. 
+    </div>
+    {% for pedido in pedidos %}
+		
+		<p><button class="btn" type="button" id="btn">Editar pedido nº {{pedido.id}}</button></p>
+
+    {% endfor %}
+	{% endif%}
+
+<h2>Novo pedido</h2>
+ <form class="form-horizontal" method="post" enctype="multipart/form-data">{% csrf_token %}
+<fieldset>
+<legend>{{ title }}</legend>
+{% for hidden in form.hidden_fields %}
+{{ hidden }}
+{% endfor %}
+
+{% for field in form.visible_fields %}
+<div class="control-group {% if field.errors %}error{% endif %}">
+{{ field.label_tag }}{%if field.field.required%}*{%endif%}
+<div class="controls">
+{{ field }}
+{% if field.help_text %}<p class="help-block">{{ field.help_text }}</p>{% endif %}
+{% if field.errors %}<span class="help-inline">{% for error in field.errors %}{% if forloop.first %}{{ error }}{% endif %}{% endfor %}</span>{% endif %}
+</div>
+</div>
+{% endfor %}
+<div class="form-actions">
+<input type="submit" value="Salvar" class="btn btn-primary" />
+<button class="btn" type="button" id="cancel-button">Cancelar</button>
+</div>
+</fieldset>
+</form>
+
+    
+   
+
+{% endblock %}

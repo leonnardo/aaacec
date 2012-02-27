@@ -44,7 +44,19 @@ class Encomenda(Model):
             string += str(elem)+', '
         string += str(lista[len(lista)-1])
         return string
-    
+
+class Pedido(Model):
+    #externos
+    usuario = ForeignKey(User,verbose_name='Usuário')
+    encomenda = ForeignKey(Encomenda)
+
+    #internos
+    #data = DateTimeField()
+    #status = CharField(choices=STATUS_CHOICES)
+
+    def __unicode__(self):
+        return str(self.usuario)+" -> "+str(self.encomenda)
+
 class Campo(Model):
     TIPO_CHOICES =(
         ('texto','Texto'),
@@ -74,10 +86,10 @@ class Info(Model):
     valor = CharField(max_length=20)
     
     #externos
-    usuario = ForeignKey(User,verbose_name = 'Usuário')
+    pedido = ForeignKey(Pedido)
     campo = ForeignKey(Campo)
     
     #metodos
     def __unicode__(self):
-        return self.usuario.username+":"+self.valor
+        return self.pedido.usuario.username+":"+self.valor
     
