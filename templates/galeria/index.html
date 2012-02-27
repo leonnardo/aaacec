@@ -1,4 +1,4 @@
 <p>Caguei, caguei, foda-se!!!</p>
 {% for photoset in output %}
-<a href='{{ photoset.album_url }}'><h1>{{ photoset.album_name }}</h1></a><br />
+<a href='albuns/{{ photoset.id }}'><h1>{{ photoset.album_name }}</h1></a>
 {% endfor %}

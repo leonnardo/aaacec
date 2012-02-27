@@ -96,12 +96,11 @@ def getPhotos(flickr,id):
             photoset_photos_list.append({'url':photo_url,'thumb':thumbnail})
         return photoset_photos_list
 
-@require_flickr_auth
-def ListarFotos(request, id):
+def listarFotos(request, id):
     f = flickr(request)
     fotos = getPhotos(f, id)
     return render_to_response(
-                'templates/galeria/index.html',
+                'templates/galeria/listar_fotos.html',
                 locals(),
                 context_instance=RequestContext(request)
            )
@@ -113,10 +112,10 @@ def index(request):
     photosets = getPhotosets(f)
     output = []
     for photoset in photosets:
-        photos = getPhotos(f,photoset['id'])
+        #photos = getPhotos(f,photoset['id'])
         output.append({
                         'album_name':photoset['name'],
-                        'photo_list': photos})
+                        'id':photoset['id']})
                         
     context = {'output':output}
     return render_to_response('galeria/index.html', context, context_instance=RequestContext(request))
