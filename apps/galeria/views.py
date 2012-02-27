@@ -97,6 +97,17 @@ def getPhotos(flickr,id):
         return photoset_photos_list
 
 @require_flickr_auth
+def ListarFotos(request, id):
+    f = flickr(request)
+    fotos = getPhotos(f, id)
+    return render_to_response(
+                'templates/galeria/index.html',
+                locals(),
+                context_instance=RequestContext(request)
+           )
+
+
+@require_flickr_auth
 def index(request):
     f = flickr(request)
     photosets = getPhotosets(f)

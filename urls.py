@@ -24,6 +24,7 @@ urlpatterns = patterns("",
     url(r"^notices/", include("notification.urls")),
     url(r"^announcements/", include("announcements.urls")),
     url(r"^galeria/", include("aaacec.apps.galeria.urls")),
+    url(r"^loja/", include("aaacec.apps.loja.urls")),
 )
 
 

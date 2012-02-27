@@ -1,0 +1,15 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+{% load ifsetting_tag %}
+
+{% block head_title %}Loja{% endblock %}
+
+{% block body %}
+    <h1>Loja AAACEC</h1>
+
+    <a href={% url apps.loja.views.listar_encomendas %}>Encomendas</a>
+        
+    
+
+{% endblock %}

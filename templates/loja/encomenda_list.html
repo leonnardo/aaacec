@@ -1,0 +1,15 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+{% load ifsetting_tag %}
+
+{% block head_title %}Listagem de Encomendas{% endblock %}
+
+{% block body %}
+    <h1>Listagem de Encomendas</h1>
+    {%for encomenda in object_list %}
+        <a href={% url apps.loja.views.fazer_encomenda encomenda.id %}>{{encomenda}}</a>
+        
+    {% endfor %}
+
+{% endblock %}
