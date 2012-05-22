@@ -1,5 +1,5 @@
-<h1>{{ photoset.album_name  }}</h1>
+<h1>{{ nome_album }}</h1>
 {% for foto in fotos %}
-  <a href="foto.photo_url"><img src='{{ foto.thumbnail }}' /></a>
+<a href="{{ foto.url }}"><img src='{{ foto.thumb }}' /></a>
 {% endfor %}
 

@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 import logging
+from xml.etree.ElementTree import tostring
 logging.basicConfig()
 
 log = logging.getLogger(__name__)
@@ -83,24 +84,26 @@ def getPhotosets(flickr):
     return photoset_list_array
 
 def getPhotos(flickr,id):
-        photoset_photos = flickr.photosets_getPhotos(photoset_id=id, extras='url_sq').find('photoset').findall('photo')
-        photoset_photos_list = []
-        for photo in photoset_photos:
-            thumbnail = photo.attrib['url_sq']
-            photo_id = photo.attrib['id']
-            secret = photo.attrib['secret']
-            farm = photo.attrib['farm']
-            server = photo.attrib['server']
-            title = photo.attrib['title']
-            photo_url = 'http://farm%s.static.flickr.com/%s/%s_%s_b.jpg' % (farm,server,photo_id,secret) 
-            photoset_photos_list.append({'url':photo_url,'thumb':thumbnail})
-        return photoset_photos_list
+    photoset_photos = flickr.photosets_getPhotos(photoset_id=id, extras='url_sq').find('photoset').findall('photo')
+    photoset_photos_list = []
+    for photo in photoset_photos:
+        thumbnail = photo.attrib['url_sq']
+        photo_id = photo.attrib['id']
+        secret = photo.attrib['secret']
+        farm = photo.attrib['farm']
+        server = photo.attrib['server']
+        title = photo.attrib['title']
+        photo_url = 'http://farm%s.static.flickr.com/%s/%s_%s_b.jpg' % (farm,server,photo_id,secret) 
+        photoset_photos_list.append({'url':photo_url,'thumb':thumbnail})
+    return photoset_photos_list
 
 def listarFotos(request, id):
     f = flickr(request)
     fotos = getPhotos(f, id)
+    album_dados = f.photosets_getInfo(photoset_id = id).find('photoset')
+    nome_album = album_dados.find('title').text
     return render_to_response(
-                'templates/galeria/listar_fotos.html',
+                'galeria/listar_fotos.html',
                 locals(),
                 context_instance=RequestContext(request)
            )

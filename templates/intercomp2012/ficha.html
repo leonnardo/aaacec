@@ -1,0 +1,94 @@
+<html>
+  <head>
+    <title>Ficha de inscrição - Intercomp 2012 - {{ pessoa.nome }}</title>
+	<style>
+		body{
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+			margin: 0px;
+			padding: 0px;
+		}
+		table{ border: none; }
+		p{
+			text-align:justify;
+			text-indent: 50px;
+		}
+		#corpo{
+			width: 670px;
+			margin: 0px auto;
+		}
+		#logotipo,#rodape{ text-align: center; }
+		#titulo{
+			text-align: center;
+			font-size: 22px;
+			line-height: 50px;
+			vertical-align: middle;
+			font-weight: bold;
+		}
+	</style>
+  </head>
+  <body>
+  	<div id="corpo">
+      <div id="logotipo"><img src="http://3.bp.blogspot.com/-I50-QtrQyI4/T0w1_DjhESI/AAAAAAAADKo/K67Ae8SwXFA/s1600/Logo+Intercomp.png" width=300 height=280 /></div>
+		<div id="titulo">INTERCOMP 2012<br/>
+		Jogos Universitários de Computação<br/>
+		<span style="font-size: 18px; line-height: 30px;">{% if pessoa.atleta %}( X ) Atleta (&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Participante {% else %} (&nbsp;&nbsp;&nbsp;&nbsp;) Atleta&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;( X ) Participante {% endif %}</span>
+		</div>
+		<div id="formulario">
+			<table width=670>
+				<tr><td>
+					<table width=670><tr><td width=50>Nome:</td><td style="border-bottom: 1px dotted #000;">{{ pessoa.nome }}</td></tr></table>
+				</td></tr>
+				<tr><td>
+					<table width=670><tr>
+						<td width=150>Data de nascimento:</td><td width=130 style="border-bottom: 1px dotted #000;">{{ pessoa.nascimento }}</td>
+						<td width=30>RG:</td><td width=180 style="border-bottom: 1px dotted #000;">{{ pessoa.rg }} {{ pessoa.emissor }}</td>
+						<td width=40>CPF:</td><td width=120 style="border-bottom: 1px dotted #000;">{{ pessoa.cpf }}</td>
+					</tr></table>
+				</td></tr>
+				<tr><td>
+					<table width=670><tr><td width=70>Endereço:</td><td style="border-bottom: 1px dotted #000;">{{ pessoa.endereco }}</td></tr></table>
+				</td></tr>
+				<tr><td>
+					<table width=670><tr>
+						<td width=55>E-mail:</td><td width=300 style="border-bottom: 1px dotted #000;">{{ pessoa.email }}</td>
+						<td width=155>Telefone Residencial:</td><td width=150 style="border-bottom: 1px dotted #000;">{{ pessoa. }}</td>
+					</tr></table>
+				</td></tr>
+				<tr><td>
+					<table width=670><tr>
+              <td width=120>Telefone celular:</td><td width=230 style="border-bottom: 1px dotted #000;">({{ddd}}) {{telefone}}</td>
+						<td width=100>Universidade:</td><td width=210 style="border-bottom: 1px dotted #000;">Unicamp</td>
+					</tr></table>
+				</td></tr>
+				<tr><td>
+					<table width=670><tr>
+						<td width=30>RA:</td><td width=320 style="border-bottom: 1px dotted #000;">{{ pessoa.ra }}</td>
+						<td width=150>Chefe de Delegação:</td><td width=160 style="border-bottom: 1px dotted #000;">Samuel Birocchi</td>
+					</tr></table>
+				</td></tr>
+			</table>
+			<p>Eu acima denominado(a) declaro estar ciente e zelar pelo patrimônio público e de terceiros
+			durante a realização do 23o InterComp, entre os dias 28, 29 e 30 de Abril e 01 de maio de 2012,
+			em Cerquilho, isentando a organização de qualquer problema com relação a depredações de patrimonios.</p>
+			<table width=670><tr><td width=240><span style="font-weight: bold;">Em caso de atleta: Modalidade:</span></td><td style="border-bottom: 1px dotted #000;">{% if pessoa.atleta %}{{pessoa.modalidade}}{% endif %}</td></tr></table>
+			<p>Declaro ainda estar apto fisicamente para a prática esportiva, isentando a organização de possíveis problemas
+			de saúde que possa vir a apresentar e de que minha participação no evento é de minha inteira responsabilidade.</p>
+			<p>Eu acima denominado declaro estar apto fisicamente e consciente de minhas responsabilidades. De acordo com os termos citados acima
+			subscrevo-me.</p>
+			<br/>
+			<table width=670 cellspacing=0 cellpadding=0><tr>
+				<td width=60>Cidade:</td><td width=300 style="border-bottom: 1px dotted #000;"></td>
+				<td width=5>,</td><td width=120 style="border-bottom: 1px dotted #000;"></td>
+				<td width=5>,</td><td width=160 style="border-bottom: 1px dotted #000;"></td>
+				<td width=60>de 2012</td>
+			</tr></table>
+			<br/><br/><br/>
+			<table width=670 cellspacing=0 cellpadding=0><tr>
+				<td width=60 style="font-weight: bold;" >Assinatura:</td><td style="border-bottom: 2px solid #000;"></td>
+			</tr></table>
+		</div>
+    <div id="rodape"><br><br>Realização:<br><img src="http://profile.ak.fbcdn.net/hprofile-ak-snc4/41713_100001754280962_2396255_n.jpg" width=70 height=70 /></div>
+	</div>
+  </body>
+</html>

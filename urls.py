@@ -25,6 +25,10 @@ urlpatterns = patterns("",
     url(r"^announcements/", include("announcements.urls")),
     url(r"^galeria/", include("aaacec.apps.galeria.urls")),
     url(r"^loja/", include("aaacec.apps.loja.urls")),
+    url(r"^intercomp/ficha/(\d+)", "aaacec.apps.intercomp2012.views.ficha"),
+    url(r"^intercomp/finalizado", "aaacec.apps.intercomp2012.views.fim"),
+    url(r"^intercomp/lista", "aaacec.apps.intercomp2012.views.lista"),
+    url(r"^intercomp/", "aaacec.apps.intercomp2012.views.encomenda"),
 )
 
 

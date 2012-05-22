@@ -1,0 +1,257 @@
+<html>
+    <head>
+      <title>AAACEC | Pré-encomenda do Agasalho 2012</title>
+      <link rel="stylesheet" href="/media/css/reset.css" type="text/css" media="screen, projection">
+      <!--[if lt IE 8]>
+        <link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection">
+      <![endif]-->
+      <script type="text/javascript" src="/media/js/jquery.min.js"></script>
+      <script type="text/javascript">        
+      </script>
+      <style type="text/css">
+        *{
+            font-family:Verdana,sans-serif;
+            font-size:12px;
+        }
+
+    #wrapper{
+        margin:0px auto;
+        padding: 10px;
+        width:960px;
+        background-color:#ddd;
+        background: -moz-linear-gradient(top, #ddd,#aaa);
+        background: -webkit-gradient(linear, left top, left bottom, from(#ddd), to(#aaa));
+        min-height:1000px;
+        
+        min-height:700px;
+    }
+    h1{
+        font-size:24px;
+        font-weight:bold;
+        display:block;
+        width:920px;
+        height:46px;
+        text-align:right;
+        margin: 0 auto;
+        background:#fff;
+        padding: 20px;
+        color: #7e0400;
+    }
+    
+    label{
+        
+        //margin-top:10px;
+        width:190px;
+        display:block;
+        font-weight:bold;
+        text-align:left;
+        margin:0 10px 0 0;
+    }
+    
+    tr{
+        display:block;
+        height:30px;
+    }
+    
+    select{
+        width:100px;
+    }
+    h2{
+        font-weight:bold;
+        font-size:16px;
+    }
+    h3{
+        font-weight:bold;
+        font-size:22px;
+    }
+
+    img{
+        height:66px;
+        background:#fff;
+        float:left;
+        padding:10px 0 10px 40px;
+    }
+    input[type=submit]{
+        margin: 10px auto;
+        padding:10px;
+    }
+    
+    body
+    { 
+        background:#fff url(http://aaacec.com/wp-content/themes/arras-theme/images/fundo-canto.png) bottom right fixed no-repeat; min-height: 100%; 
+        position: relative; 
+    }
+    fieldset{
+        border: 1px solid #666;
+        margin:10px 0;
+        padding: 5px;
+        width:500px;
+        float:left;
+    }
+    
+    #id_telefone{
+        width:140px;
+    }
+    
+    #id_nome{
+        width:300px;
+    }
+    #id_email{
+        width:300px;
+    }
+    
+    p{
+        margin:10px 0;
+    }
+    
+    #texto{
+        text-align:justify;
+        background:#ddd;
+        color:222;
+        padding:10px;
+    }
+    
+    #arte{
+        
+        height:600px;
+        
+        
+    }
+    #arte-container{
+        float:right;
+        margin:22px 0;
+        border:1px solid #666;
+    }
+    #errormsg{
+        margin:20px;
+        border:1px solid #000;
+        padding:10px;
+        background:#222;
+        color:#ddd;
+    }
+    .errorlist{
+    
+        color:#ff6600;
+    }
+    .dadospagto{
+        list-style:disc;
+        font-weight:bold;
+        margin-left:30px;
+    }
+      </style>
+
+    </head>
+    <body>
+        <div id="wrapper">
+        <img src="http://aaacec.com/wp-content/uploads/2011/08/aaacec.png" />
+        <h1>Pré-encomenda do Agasalho 2012</h1>
+        
+        <fieldset>
+        <legend style="font-size:16px;font-weight:bold;">Cadastro de Pré-encomenda</legend>
+            <form method='post'>
+                {% csrf_token %}
+                {% if form.errors %}
+                    <div id="errormsg">
+                    <b style="height:30px;display:block;">Há erros no preenchimento do formulário. Por favor, corrija-os:</b>
+                    {% for campo,error in form.errors.items %}
+                        <div>{{campo|capfirst}}: <span class="errorlist">{{error.0}}</span></div>
+                    {% endfor %}
+                    </div>
+                {% endif %}
+                <table>
+                <tr>
+                    <th><label for="id_nome">Nome completo:</label></th>
+                    <td>{{form.nome}}</td>
+                </tr>
+                <tr>
+                    <th><label for="id_email">Email:</label></th>
+                    <td>{{form.email}}</td>
+                </tr>
+                <tr>
+                    <th><label for="id_rg">RG</label></th>
+                    <td>{{form.rg}}</td>
+                </tr>
+                <tr>
+                    <th><label for="id_ra">RA:</label></th>
+                    <td>{{form.ra}}</td>
+                </tr>                
+                <tr>
+                    <th><label for="id_curso">Curso:</label></th>
+                    <td>{{form.curso}}</td>
+                </tr>
+                <tr>
+                    <th><label for="id_ano">Ano de ingresso:</label></th>
+                    <td>{{form.ano}}</td>
+                </tr>
+                <tr>
+                    <th><label for="id_membro">Membro/Namorada</label></th>
+                    <td>{{form.cod_pessoa}}</td>
+                </tr>
+                <tr>
+                    <th><label for="id_cor">Tipo de Pacote:</label></th>
+                    <td>{{form.cod_tipo}}</td>
+                </tr>
+                <tr>
+                    <th><label for="id_tamanho">Tamanho:</label></th>
+                    <td>{{form.tamanho}}</td>
+                </tr>
+                <tr>
+                    <th><label for="id_forma">Forma de Pagamento:</label></th>
+                    <td>{{form.formapag}}</td>
+                </tr>
+
+                </table>
+                
+                <hr style="clear:both;margin:10px 0;"/>
+                
+                
+                
+                <div id="texto">
+                    <p style="font-weight:bold;font-size:14px;">Observações:</p>
+                    <p>A encomenda poderá ser paga tanto via depósito/transferência bancária quanto pessoalmente na sala da atlética em dinheiro/cheque.
+
+Pagamentos através da conta da Atlética também poderão ser feitos no valor de 50% da encomenda. O comprovante deverá ser enviado em anexo por email para <a href="mailto:pagamentos@aaacec.com">pagamentos@aaacec.com</a> com o nome completo do membro e RA. O assunto do email deve ser: Nome-Agasalho. Seguem as informações bancárias:</p>
+
+                    <p style="">
+                        <ul>
+                        <li class="dadospagto">Banco do Brasil</li>
+                        <li class="dadospagto">Ag. 2447-3</li>
+                        <li class="dadospagto">Cc. 41038-1</li>
+                        <li class="dadospagto" style="font-size:11px;">Associação Atlética Acadêmica da Ciência e Engenharia de Computação</li>
+                        <li class="dadospagto">CNPJ: 11836247/0001-69</li>
+                        </ul>
+                    </p>
+
+                    <p>Pagamentos na sala da atlética deverão ser feitos com no mínimo 50% do valor no ato da encomenda e o restante no momento da retirada do produto.</p>
+
+                    <p>Todos receberão um email de confirmação do pagamento da sua encomenda.</p>
+                </div>
+                        <div id="texto">
+                            O preço dos agasalhos está a seguir:
+                                <ul style="list-style:disc;">
+                                    <li style="list-style:disc; margin-left:30px;"><b>Associados: </b>R$ 120,00</li>
+                                    <li style="list-style:disc; margin-left:30px;"><b>Não-associados*: </b>R$ 160,00</li>
+                                </ul>
+                                
+                                 <p>*Todos que desejarem se associar no ato da compra poderão pagar o preço do agasalho como associado mais o valor de associação. </p>
+                                 <p><b>Atenção:</b> 
+                                    <ul style="list-style:disc;">
+                                        <li style="list-style:disc; margin-left:30px;">Primeiramente será enviado um email de confirmação da sua associação ou não à atlética, juntamente com o valor total a ser pago.</li>
+                                        <li style="list-style:disc; margin-left:30px;">Todos receberão um email de confirmação do pagamento da sua encomenda.</li>
+                                    </ul>
+                                </p>
+
+                            <hr style="clear:both;margin:10px 0;"/>
+                        </div>
+                <input type="submit" value="Enviar pré-encomenda" >
+            </form>
+            
+        </fieldset>
+        <div id="arte-container">
+            <img src="http://aaacec.com/wp-content/uploads/2012/03/Agasalho-2012-Base.jpg" id="arte"/>
+        </div>
+        
+        <hr style="clear:both;margin:10px 0;"/>
+        </div>
+    </body>
+</html>
