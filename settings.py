@@ -175,6 +175,7 @@ INSTALLED_APPS = [
     "profiles",
     "loja",
     "intercomp2012",
+    "blog",
 ]
 
 FIXTURE_DIRS = [

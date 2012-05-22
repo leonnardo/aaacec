@@ -29,6 +29,7 @@ urlpatterns = patterns("",
     url(r"^intercomp/finalizado", "aaacec.apps.intercomp2012.views.fim"),
     url(r"^intercomp/lista", "aaacec.apps.intercomp2012.views.lista"),
     url(r"^intercomp/", "aaacec.apps.intercomp2012.views.encomenda"),
+    url(r"^blog/", include("aaacec.apps.blog.urls")),
 )
 
 
