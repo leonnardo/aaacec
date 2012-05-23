@@ -1,0 +1,312 @@
+@charset "utf-8";
+
+/* INSTALAÇÃO DE FONTES:
+    Fontes customizadas do layout. */
+/* Font THESIS */
+@font-face{
+	font-family: Thesis;
+	src: url(../fonts/Thesis.otf);
+}
+/* Font BOOBLEBODDY LIGHT */
+@font-face{
+	font-family: Bobble;
+	src: url(../fonts/Bobbleboddy_light.ttf);
+}
+/* Font COLABORATE e suas variações FINAS e GROSSAS */
+@font-face{
+	font-family: Colaborate;
+	src: url(../fonts/ColabReg.otf);
+}
+@font-face{
+	font-family: Colaborate;
+	font-weight: 100;
+	src: url(../fonts/ColabThi.otf);
+}
+@font-face{
+	font-family: Colaborate;
+	font-weight: bold;
+	src: url(../fonts/ColabBol.otf);
+}
+/* ~~~~~~ */
+
+/* TAGS HTMLS:
+    Padrões HTMLS que se repetem na página. */
+body{ background: repeat url(../img/site/background.gif); color: #000; }
+a{ text-decoration: none; }
+a:hover{ text-decoration: none; }
+
+/* GENERIC CLASSES:
+    Padrões de Classes. */
+.InputDiv,.Input,.InputOpen,.InputClose{ height: 27px;}
+.Input,.InputOpen,.InputClose,.InputButton,.InputDiv{ float: left; }
+.InputDiv{ margin: 5px; }
+.Input{ background: url(../img/site/inputback.gif) repeat-x; border: 0px; font-family: Colaborate, Arial, Helvetica, sans-serif; }
+.InputOpen,.InputClose{ width: 7px; }
+.InputOpen{ background: url(../img/site/inputopen.gif) no-repeat; }
+.InputClose{ background: url(../img/site/inputclose.gif) no-repeat; }
+.InputButton{
+	font-family: Colaborate, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #1D2E1D;
+	text-transform: uppercase;
+	height: 27px;
+	width: 50px;
+	background: url(../img/site/inputbutton.gif) no-repeat;
+	border: 0px;
+	margin: 5px;
+}
+.clear{ clear: both; }
+
+/* FUNDO DO TOPO DO SITE:
+    Imagens que constituem o fundo do site, posicionadas corretamente para qualquer resolução. */
+#TopBackground,#TopDivisor{
+	height: 250px;
+	width: 100%;
+	position: absolute;
+}
+#TopBackground{
+	background: no-repeat url(../img/site/topbackground.jpg) -237px 0px;
+	background-color: #7F0001;
+}
+#TopDivisor{
+	background: repeat-x url(../img/site/topdivisor.gif) 0px 248px;
+}
+/* ~~~~~~ */
+
+#ContentWrapper{
+	width: 960px;
+	position: relative;
+	margin: 0px auto;
+}
+#MiddleContentWrapper{
+	width: 960px;
+	height: 240px;
+	position: relative;
+}
+
+/* CORPO/TOPO DO SITE:
+    Estilos que configuram o conteudo e o topo do site. */
+#SiteTop{
+	height: 135px;
+	padding-left: 230px;
+	font-family: Thesis, Verdana, Geneva, sans-serif;
+	position: relative;
+}
+#ContentSlider, #LoginArea{
+	height: 230px;
+	position: absolute;
+}
+/* TOPO do SITE e MENU */
+#SiteTop ul{ margin: 15px 0px 0px 10px; }
+#SiteTop li{
+	color: #FFF;
+	font-size: 20px;
+	display: inline-block;
+	line-height: 20px;
+	text-align: center;
+	height: 20px;
+	margin: 0px 3px;
+	padding: 0px 7px;
+	cursor: pointer;
+}
+#SiteTop li:hover{ color: #5E0002; }
+#SiteTop .selected, #SiteTop .selected:hover{ color: #000; }
+
+/* SLIDER de CONTEUDO */
+#ContentSlider{
+	width: 680px;
+	background: url(../img/site/SliderShadow.png) no-repeat;
+	margin: 10px 10px 0px 0px;
+}
+.SliderButton{
+	height: 53px;
+	width: 53px;
+	position: absolute;
+	z-index: 1010;
+	cursor: pointer;
+}
+#ContentSlider .Prev, #ContentSlider .Next{ top: 90px; }
+#ContentSlider .Prev{ left: 0px; }
+#ContentSlider .Next{ left: 625px; }
+#SliderBox{
+	height: 194px;
+	width: 614px;
+	padding: 3px;
+	background: #323232;
+	position: absolute;
+	top: 13px;
+	left: 29px;
+	z-index: 1000
+}
+#SliderContent{
+	width: 614px;
+	background: #141414;
+	z-index: 1005;
+}
+.SliderText, .SliderImage{
+	overflow: hidden;
+}
+.SliderText{
+	font-family: Bobble, Arial, Helvetica, sans-serif;
+	color: #FFF;
+	width: 324px;
+	padding: 5px 10px 5px 10px;
+	position: absolute;
+	left: 263px;
+	max-height: 184px;
+}
+.SliderText p{ text-indent: 20px; font-size: 14px; text-align: justify; }
+.SliderText h1{ font-size: 22px; margin-bottom: 10px; }
+.SliderImage{
+	width: 260px;
+	position: absolute;
+}
+.SliderImage img{
+	max-width: 260px;
+	max-height: 194px;
+}
+/* LOGIN BOX */
+#LoginArea{
+	width: 280px;
+	background: url(../img/site/LoginShadow.png) no-repeat;
+	margin-top: 10px;
+	left: 680px;
+}
+#LoginBox{
+	font-family: Colaborate, Arial, Helvetica, sans-serif;
+	width: 240px;
+	height: 180px;
+	padding: 10px;
+	background-color: #FFF;
+	position: absolute;
+	top: 13px;
+	left: 6px;
+}
+#LoginBox h1{ font-size: 30px; margin: 14px 0px 20px; }
+#LoginBox img{ margin-right: 10px; }
+#LoginBox p{ text-indent: 20px; text-align: justify; font-size: 14px;}
+#LoginBox form{ text-align: center; }
+/* SITE CONTENT */
+#SiteContent{
+	font-family: Colaborate, Arial, Helvetica, sans-serif;
+	width: 615px;
+	padding: 10px;
+	margin: 0px 15px;
+	float: left;
+}
+#ContentTitle{ margin-bottom: 15px; height: 50px;}
+#ContentTitle img{ float: left; margin-right: 10px; }
+#ContentTitle h1{ font-size: 30px; }
+#ContentTitle h2{ font-size: 14px; }
+/* BLOG FORMAT */
+.Post{
+	border-bottom: 1px dashed #CCC;
+	margin-bottom: 15px;
+	padding-bottom: 15px;
+	text-align: justify;
+}
+.Post h1{ font-size: 19px; font-weight: bold; }
+.Post h2{ font-size: 14px; margin-bottom: 12px; }
+.Post p{ font-size: 14px; text-indent: 40px; }
+.PostContent{ margin-bottom: 15px; }
+.PostMore{ text-align: right; }
+#BlogNav{ text-align: center; margin: 20px 0px 20px; }
+#BlogNav li{
+	display: inline-block;
+	color: #999;
+	font-size: 13px;
+	line-height: 20px;
+	height: 20px;
+	border: 1px solid #999;
+	background-color: #EFEFEF;
+	margin: 0px 5px;
+	padding: 0px 8px;
+	cursor: pointer;
+}
+#BlogNav .selected, #BlogNav li:hover{
+	color: #0762a1;
+	border: 1px solid #0762a1;
+}
+#BlogNav .unselectable, #BlogNav .selected{ cursor: default; }
+
+/* SIDE BAR CONTENT */
+#SiteSideContent{
+	width: 255px;
+	font-family: Colaborate, Arial, Helvetica, sans-serif;
+	padding: 10px;
+	margin-left: 15px;
+	float: left;
+}
+
+/* SIDE BAR CONTENT */
+#StoreSideBar { text-align: center; }
+#StoreSideBar a{ color: #a70000; }
+#StoreSideBar a:hover{ color: #4d0000; }
+
+.ProductBox{
+	padding: 3px;
+	background-color: rgba(0,0,0,0.1);
+	font-size: 14px;
+	margin: 5px 0px;
+}
+.ProductBox:hover{ background-color: rgba(0,0,0,0.15); }
+.ProductBox h1{
+	font-weight: bold;
+	font-size: 16px;
+	margin-top: 5px;
+}
+.ProductBox h2{
+	font-style: italic;
+	font-size: 12px;
+	margin-bottom: 10px;
+}
+.ProductBox h3{
+	height: 55px;
+	overflow: hidden;
+}
+.ProductBox h4{
+	font-weight: bold;
+	font-size: 16px;
+}
+.ProductImage{
+	width: 115px;
+	height: 115px;
+	border: 1px solid #BBB;
+}
+.left .ProductImage{ float: left; }
+.right .ProductImage{ float: right; }
+.left .ProductBox h1, .left .ProductBox h2, .left .ProductBox h3, .left .ProductBox h4{ margin-left: 120px; }
+.right .ProductBox h1, .right .ProductBox h2, .right .ProductBox h3, .right .ProductBox h4{ margin-right: 120px; }
+#StoreSideBar .left{ text-align: left; }
+#StoreSideBar .right{ text-align: right; }
+.left .ProductImage{ margin-right: 5px; }
+.right .ProductImage{ margin-left: 5px; }
+
+/* ~~~~~~ */
+
+/* RODAPÉ DO SITE:
+    Estilos que configuram o rodapé do site. */
+
+/* ~~~~~~ */
+#Footer{
+	background: url(../img/site/footerDivisor.png) repeat-x #235f81;
+	clear:both;
+	padding-top: 110px;
+}
+#FooterContent{
+	width: 960px;
+	margin: 0px auto;
+	font-family: Colaborate, Arial, Helvetica, sans-serif; 
+	font-size: 16px;
+	font-weight: 100;
+	color: #FFF;
+}
+#FooterContent h1{
+	font-weight: bold;
+	font-size: 26px;
+	color: #001b2b;
+}
+.FooterColumns{
+	margin: 0px 10px 20px 10px;
+	float: left;
+}

@@ -6,3 +6,5 @@ class Post(models.Model):
     content = models.TextField()
     time = models.DateTimeField()
 
+    def __unicode__(self):
+        return self.title
