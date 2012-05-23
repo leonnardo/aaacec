@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<!-- Meta Tags -->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<!-- CSS -->
+		<link href="../site_media/static/css/meyer.css" rel="stylesheet" type="text/css">
+		<link href="../site_media/static/css/style.css" rel="stylesheet" type="text/css">
+		<!-- Javascript -->
+		<!-- Outros -->
+		<title>AAACEC - Atlética Computação Unicamp</title>
+	</head>
+	<body>
+		<!-- Fundo do Topo -->
+		<div id="TopBackground"><div id="TopDivisor"></div></div>
+		<!-- Topo/Corpo -->
+		<div id="ContentWrapper">
+			<!-- Topo -->
+			<div id="SiteTop">
+				<img src="../site_media/static/img/site/aaacec.png" style="margin-left: 20px; clear: both;"/><br/>
+				<ul>
+					<li class="selected">Inicial</li>
+					<li>AAACEC</li>
+					<li>Esporte</li>
+					<li>Eventos</li>
+					<li>Bateria</li>
+					<li>Loja</li>
+					<li>Contato</li>
+				</ul>
+			</div>
+			<div id="MiddleContentWrapper">
+				<div id="ContentSlider">
+					<div class="SliderButton Prev"><img src="../site_media/static/img/site/SliderPrev.png" alt="Anterior"></div>
+					<div id="SliderBox">
+						<div id="SliderContent">
+							<div class="SliderImage">
+								<img src="../site_media/static/img/valorosa-interbatuc3.jpg" alt="Valorosa"/>
+							</div>
+							<div class="SliderText">
+								<h1>Valorosa Campeã</h1>
+								<p>Após uma apresentação sem precedentes, na terceira edição do InterBatuc, a Valorosa se consagrou campeã entre as baterias universitárias de todo o país!</p>
+								<p>Veja fotos, videos, comentários e a trajetória da bateria que levou o nome da Computação e da Unicamp ao topo.</p>
+								<br/><br/><p>Veja tudo +</p>
+							</div>
+						</div>
+					</div>
+					<div class="SliderButton Next"><img src="../site_media/static/img/site/SliderNext.png" alt="Próximo"></div>
+				</div>
+				<div id="LoginArea">
+					<div id="LoginBox">
+						<img src="../site_media/static/img/site/LoginIco.png" alt="Login" style="float:left;"/><h1><span style="font-weight:bold;">Bem</span>-vindo!</h1>
+						<p>Faça seu login e aproveite tudo que a AAACEC tem para oferecer!</p>
+						<form>
+							<div class="InputDiv" style="width: 200px;"><div class="InputOpen"></div><div class="InputBox"><input type="text" class="Input" style="width:186px;"/></div><div class="InputClose"></div></div>
+							<div class="InputDiv" style="width: 140px; clear: left;"><div class="InputOpen"></div><div class="InputBox"><input type="password" class="Input" style="width: 126px;"/></div><div class="InputClose"></div></div>
+							<input type="button" value="Ok" class="InputButton"/>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div id="SiteContent">
+				<div id="ContentTitle">
+					<img src="../site_media/static/img/site/PencilIco.png" alt="Blog"/>
+					<h1><span style="font-weight: bold;">No</span>vidades</h1>
+					<h2>O que está rolando pela AAACEC?</h2>
+				</div>
+        {% for post in latest %}
+        <div class="Post">
+          <h1>{{ post.title }}</h1>
+					<h2>Por Leonnardo Rabello (Bunds) -  {{ post.time|date:"d \d\e F \d\e Y\, l\, \à\s G\mi" }}.</h2>
+					<div class="PostContent">
+            <p>{{ post.content }}</p>
+					</div>
+					<div class="PostMore">Leia Mais</div>
+					<div class="PostSocial"></div>
+				</div>
+        {% endfor %}
+				<div id="BlogNav">
+					<ul>
+						<li class="selected">1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li class="unselectable">...</li><li>22</li><li>Próx.</li>
+					</ul>
+				</div>
+			</div>
+			<div id="SiteSideContent">
+				<div id="ContentTitle">
+					<img src="../site_media/static/img/site/CartIco.png" alt="Blog"/>
+					<h1><span style="font-weight: bold;">Loja</span> AAACEC</h1>
+					<h2>Top Produtos</h2>
+				</div>
+				<div id="StoreSideBar">
+					<div class="ProductBox left">
+						<img src="../site_media/static/img/produto1.jpeg" class="ProductImage"/>
+						<h1>Agasalho 2011</h1>
+						<h2>* Sob encomenda</h2>
+						<h3>Tamanhos PP, P, M, G, GG e XG.</h3>
+						<h4>R$ 130,00</h3>
+						<div class="clear"></div>
+					</div>
+					<div class="ProductBox right">
+						<img src="../site_media/static/img/produto1.jpeg" class="ProductImage"/>
+						<h1>Agasalho 2011</h1>
+						<h2>* Sob encomenda</h2>
+						<h3>Tamanhos PP, P, M, G, GG e XG.</h3>
+						<h4>R$ 130,00</h3>
+						<div class="clear"></div>
+					</div>
+					<div class="ProductBox left">
+						<img src="../site_media/static/img/produto1.jpeg" class="ProductImage"/>
+						<h1>Agasalho 2011</h1>
+						<h2>* Sob encomenda</h2>
+						<h3>Tamanhos PP, P, M, G, GG e XG.</h3>
+						<h4>R$ 130,00</h3>
+						<div class="clear"></div>
+					</div>
+					<div class="ProductBox right">
+						<img src="../site_media/static/img/produto1.jpeg" class="ProductImage"/>
+						<h1>Agasalho 2011</h1>
+						<h2>* Sob encomenda</h2>
+						<h3>Tamanhos PP, P, M, G, GG e XG.</h3>
+						<h4>R$ 130,00</h3>
+						<div class="clear"></div>
+					</div>
+					<a href="#">« Navegue por toda a loja »</a>
+				</div>
+			</div>
+		</div>
+		<!-- Rodapé -->
+		<div id="Footer">
+			<div id="FooterContent">
+				<div class="FooterColumns" style="width: 230px;">
+					<h1>Acompanhe-nos</h1>
+					<img src="../site_media/static/img/site/facebook.png" style="width: 50px;"/>
+					<img src="../site_media/static/img/site/youtube.png" style="width: 50px;"/>
+					<img src="../site_media/static/img/site/rss.png" style="width: 50px;"/>
+					<img src="../site_media/static/img/site/twitter.png" style="width: 50px;"/>
+				</div>
+				<div class="FooterColumns" style="width: 200px;">
+					<h1>Mapa do Site</h1>
+				</div>
+				<div class="FooterColumns" style="width: 470px;">
+					<h1>Parceiros</h1>
+				</div>
+				<div class="clear"></div>
+				<div class="FooterColumns" style="width: 210px;">
+					<img src="../site_media/static/img/site/unicamp.png" alt="Orgulho de ser Unicamp!"/>
+				</div>
+				<div class="FooterColumns" style="width: 710px; text-align: center;">
+					<span style="font-weight: normal;">Fale conosco:</span><br/>
+					<span style="font-weight: normal;">contato@aaacec.com</span> ou ligue <span style="font-weight: normal;">(19) 0000-0000</span> durantes os horários de atendimento.<br/>
+					Rua Saturnino de Brito, s/n, Cidade Universitária Zeferino Vaz, CEP 13083-889, Barão Geraldo, Campinas –SP<br/>
+					Licenciado sob Creative Commons Atribuição-Uso não-comercial-Vedada a criação de obras derivadas 3.0 Unported License.
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</body>
+</html>
