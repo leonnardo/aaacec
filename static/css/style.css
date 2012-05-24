@@ -210,6 +210,7 @@ a:hover{ text-decoration: none; }
 .Post p{ font-size: 14px; text-indent: 40px; }
 .PostContent{ margin-bottom: 15px; }
 .PostMore{ text-align: right; }
+.PostTags{ text-align: right; }
 #BlogNav{ text-align: center; margin: 20px 0px 20px; }
 #BlogNav li{
 	display: inline-block;

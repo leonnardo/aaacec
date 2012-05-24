@@ -67,11 +67,17 @@
         {% for post in latest %}
         <div class="Post">
           <h1>{{ post.title }}</h1>
-					<h2>Por Leonnardo Rabello (Bunds) -  {{ post.time|date:"d \d\e F \d\e Y\, l\, \à\s G\hi" }}.</h2>
+          <h2>Por {{ post.author.get_full_name }} -  {{ post.pub_date|date:"d \d\e F \d\e Y\, l\, \à\s G\hi" }}.</h2>
 					<div class="PostContent">
             <p>{{ post.content }}</p>
 					</div>
 					<div class="PostMore">Leia Mais</div>
+          <div class="PostTags">
+             Tags:
+            {% for tag in post.tags.all %}
+            <a href="/blog/tag/{{tag}}">{{tag}}</a>{% if not forloop.last %},{% endif %} 
+            {% endfor %}
+          </div>
 					<div class="PostSocial"></div>
 				</div>
         {% endfor %}

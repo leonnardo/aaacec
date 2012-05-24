@@ -1,10 +1,14 @@
+import datetime
 from django.db import models
+from django.contrib.auth.models import User
+from taggit.managers import TaggableManager
 
-# Create your models here.
 class Post(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
-    time = models.DateTimeField()
+    pub_date = models.DateTimeField(default=datetime.datetime.now)
+    author = models.ForeignKey(User)
+    tags = TaggableManager()
 
     def __unicode__(self):
         return self.title

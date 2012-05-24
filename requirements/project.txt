@@ -7,3 +7,4 @@
 # See http://pip-installer.org/requirement-format.html for more information.
 
 flickrapi==1.4.2
+django-taggit==0.9.3

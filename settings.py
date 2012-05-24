@@ -171,6 +171,7 @@ INSTALLED_APPS = [
     "pinax.apps.signup_codes",
     
     # project
+    "taggit",
     "about",
     "profiles",
     "loja",
