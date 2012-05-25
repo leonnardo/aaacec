@@ -8,3 +8,4 @@
 
 flickrapi==1.4.2
 django-taggit==0.9.3
+markup==0.2
