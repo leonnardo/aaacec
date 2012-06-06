@@ -9,6 +9,7 @@ class Post(models.Model):
     pub_date = models.DateTimeField(default=datetime.datetime.now)
     author = models.ForeignKey(User)
     tags = TaggableManager()
+    pic = models.URLField(max_length=300, blank=True)
 
     def __unicode__(self):
         return self.title

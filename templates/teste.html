@@ -1,0 +1,11 @@
+{% if object_list %}
+   <ul>{% for post in object_list %}
+     <li>
+     <h2>{{ post.title }}</h2>
+     <p>{{ post.content }}</p>
+     <p> {{ post.author }}</p>
+     </li>
+   {% endfor %}</ul>
+{% endif %}
+
+{% if is_paginated %}{% load paginator %}{% paginator 2 %}{% endif %}
