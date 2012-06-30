@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 import flickrapi
 from django.conf import settings
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 import logging
-from xml.etree.ElementTree import tostring
+#from xml.etree.ElementTree import tostring
 logging.basicConfig()
 
 log = logging.getLogger(__name__)
@@ -71,7 +71,7 @@ def flickr(request):
             store_token=False)
     return f
 
-# view que pega as informações de todos os albuns
+# View que pega as informações de todos os albuns
 def getPhotosets(flickr):
     photoset_list = flickr.photosets_getList().find('photosets').findall('photoset')
     photoset_list_array = []
@@ -83,6 +83,7 @@ def getPhotosets(flickr):
                 'name':photoset_title})
     return photoset_list_array
 
+# Infos das fotos de um dado album
 def getPhotos(flickr,id):
     photoset_photos = flickr.photosets_getPhotos(photoset_id=id, extras='url_sq').find('photoset').findall('photo')
     photoset_photos_list = []
@@ -97,6 +98,7 @@ def getPhotos(flickr,id):
         photoset_photos_list.append({'url':photo_url,'thumb':thumbnail})
     return photoset_photos_list
 
+# Lista as fotos de um album
 def listarFotos(request, id):
     f = flickr(request)
     fotos = getPhotos(f, id)
